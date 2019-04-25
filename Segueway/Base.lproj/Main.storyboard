@@ -235,9 +235,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jj-tg-GVA">
+                                <rect key="frame" x="125.5" y="377.5" width="124" height="48"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <state key="normal" title="Post_Noti"/>
+                                <connections>
+                                    <action selector="sendmessageWithNotificationWithSender:" destination="mGW-sl-ByH" eventType="touchUpInside" id="1ya-Ox-r1N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1Jj-tg-GVA" firstAttribute="centerX" secondItem="HrX-1u-JPT" secondAttribute="centerX" id="6kY-Nd-M8o"/>
                             <constraint firstItem="Lm4-n8-pSu" firstAttribute="centerY" secondItem="HrX-1u-JPT" secondAttribute="centerY" id="CRC-AZ-d6N"/>
                             <constraint firstItem="Lm4-n8-pSu" firstAttribute="centerX" secondItem="HrX-1u-JPT" secondAttribute="centerX" id="DUU-MD-LRq"/>
                             <constraint firstItem="fd5-H8-TTj" firstAttribute="leading" secondItem="0m2-ql-bJ7" secondAttribute="leading" constant="40" id="Hbf-So-olh"/>
@@ -245,9 +254,13 @@
                             <constraint firstItem="V4P-S2-f2P" firstAttribute="centerX" secondItem="HrX-1u-JPT" secondAttribute="centerX" id="TUD-z5-g5M"/>
                             <constraint firstItem="V4P-S2-f2P" firstAttribute="centerY" secondItem="HrX-1u-JPT" secondAttribute="centerY" multiplier="1/2" constant="1" id="bqm-Lt-Eag"/>
                             <constraint firstItem="fd5-H8-TTj" firstAttribute="top" secondItem="V4P-S2-f2P" secondAttribute="bottom" constant="56" id="mhj-F8-gWN"/>
+                            <constraint firstItem="1Jj-tg-GVA" firstAttribute="top" secondItem="Lm4-n8-pSu" secondAttribute="bottom" constant="20" id="of3-B8-UOe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0m2-ql-bJ7"/>
                     </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="fd5-H8-TTj" id="VA7-UH-8K5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hi8-C5-aug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

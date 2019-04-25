@@ -15,8 +15,8 @@ class ViewControllerA: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
+        NotificationCenter.default.addObserver(self, selector:#selector(didreceiveNotifi(_:)), name: Notification.Name.noti_sendMessage, object: nil)
     }
     /*
      ## 注意
@@ -42,8 +42,7 @@ class ViewControllerA: UIViewController {
             }
     }
     
-    //MARK: unwind segueway #1
-    //MARK: unwind segueway #2
+    //MARK: unwind segueway #1 & unwind segueway #2
     @IBAction func unwindSegueTopage1(_ segue : UIStoryboardSegue) {
         
         switch segue.identifier {
@@ -55,6 +54,12 @@ class ViewControllerA: UIViewController {
             self.recivedMsgLabel.text = vc2.vc2textField.text
         default:
             self.recivedMsgLabel.text = ""
+        }
+    }
+    
+    @objc func didreceiveNotifi(_ sender : Notification) {
+        if let userInfo = sender.userInfo as? [String : String] {
+            self.recivedMsgLabel.text = userInfo[NotificationInfo.message]
         }
     }
 }

@@ -7,22 +7,43 @@
 //
 
 import UIKit
+
+//MARK: Protocol
 protocol SendMessageBack : AnyObject {
     func sendMessage(message : String);
 }
+
+//define struct for noti userInfo dictory key
+struct NotificationInfo {
+    static let viewcontroller = "viewcontroller"
+    static let message = "message"
+}
+
 class ViewControllerD: UIViewController {
     weak var delegate : SendMessageBack?
+    @IBOutlet weak var inputTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func prepareforDelegate(sender: UIButton) {
         delegate?.sendMessage(message: "message from ViewControllerD")
-        self.dismiss(animated: true, completion: nil)
+        self.dissmissCurrentController()
     }
-
+    
+    
+    //MARK: post notification
+    @IBAction func sendmessageWithNotification(sender: UIButton) {
+        
+        
+        NotificationCenter.default.post(name: .noti_sendMessage, object: "message", userInfo: [NotificationInfo.viewcontroller:  "ViewControllerD",NotificationInfo.message: self.inputTextField.text ?? ""])
+        self.dissmissCurrentController()
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -33,4 +54,17 @@ class ViewControllerD: UIViewController {
     }
     */
 
+}
+
+//MARK Extensions
+
+//more clearer noti name
+extension Notification.Name {
+    static let noti_sendMessage = Notification.Name("NOTI_SEND_MESSAGE")
+}
+
+extension UIViewController {
+    func dissmissCurrentController() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
