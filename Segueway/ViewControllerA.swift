@@ -36,6 +36,10 @@ class ViewControllerA: UIViewController {
             vc1.messageFormPage1 = self.inputTextField.text ?? ""
         case "toVC3":
             let vc3 = segue.destination as! ViewControllerD
+            vc3.callBackwithText = { (inputString) in
+                print(inputString)
+                self.recivedMsgLabel.text = inputString
+            }
             vc3.delegate = self
         default:
             return

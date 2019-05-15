@@ -22,6 +22,8 @@ struct NotificationInfo {
 class ViewControllerD: UIViewController {
     weak var delegate : SendMessageBack?
     @IBOutlet weak var inputTextField: UITextField!
+    typealias callBackWithInputText = (String)-> Void
+    var callBackwithText : callBackWithInputText?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +46,14 @@ class ViewControllerD: UIViewController {
     }
     
     
+    @IBAction func closureCallback(_ sender: Any) {
+        if let text = self.inputTextField.text {
+            if(self.callBackwithText != nil ) {
+                 self.callBackwithText?(text)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
